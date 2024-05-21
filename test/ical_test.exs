@@ -1,8 +1,11 @@
-defmodule IcalTest do
+defmodule ICalTest do
   use ExUnit.Case
-  doctest Ical
+  alias ICal.Fixtures
 
   test "greets the world" do
-    assert Ical.hello() == :world
+    "example.ics"
+    |> Fixtures.load()
+    |> ICal.parse()
+    |> dbg()
   end
 end
