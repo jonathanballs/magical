@@ -7,7 +7,7 @@ defmodule Magical.MixProject do
       description: "An iCal parser with better time zone support",
       app: :magical,
       package: package(),
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.16",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
