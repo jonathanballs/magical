@@ -1,9 +1,23 @@
 defmodule ICal.Parser do
   alias ICal.Calendar
-  alias ICal.Event
   alias ICal.Parser.CalendarParser
 
-  def parse_lines(lines) do
+  def parse(ical_string) do
+    ical_string
+    |> adjust_wrapped_lines()
+    |> String.split("\n")
+    |> Enum.map(&String.trim_trailing/1)
+    |> Enum.map(&String.replace(&1, ~S"\n", "\n"))
+    |> Enum.map(&ICal.Kv.parse/1)
+    |> Enum.filter(fn l -> not is_nil(l) end)
+    |> parse_lines()
+  end
+
+  defp adjust_wrapped_lines(body) do
+    String.replace(body, ~r/\r?\n[ \t]/, "")
+  end
+
+  defp parse_lines(lines) do
     lines
     |> build_tree()
     |> Enum.reduce(%Calendar{}, &CalendarParser.parse_calendar/2)
