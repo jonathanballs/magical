@@ -12,7 +12,7 @@ defmodule MagicalTest do
              prodid: "//DesignMyNight//Booking//EN",
              version: "2.0",
              time_zone: "Europe/London",
-             title: nil,
+             name: nil,
              events: [
                %Magical.Event{
                  uid: "6529327f4eabe",
@@ -54,7 +54,7 @@ defmodule MagicalTest do
              ],
              prodid: "-//uk.gov/GOVUK calendars//EN",
              time_zone: "Etc/UTC",
-             title: nil,
+             name: nil,
              version: "2.0"
            } = calendar
   end
@@ -79,7 +79,7 @@ defmodule MagicalTest do
              prodid: nil,
              version: "2.0",
              time_zone: "Etc/UTC",
-             title: nil,
+             name: nil,
              events: [
                %Magical.Event{
                  uid: nil,

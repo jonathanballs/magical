@@ -30,4 +30,38 @@ defmodule Magical.Event do
             rdate: nil,
             x_prop: nil,
             iana_prop: nil
+
+  @type t :: %__MODULE__{
+          uid: String.t(),
+          dtstamp: DateTime.t(),
+          dtstart: DateTime.t() | Date.t(),
+          dtend: DateTime.t() | Date.t(),
+          summary: String.t(),
+          description: String.t(),
+          location: String.t(),
+          class: String.t(),
+          created: String.t(),
+          geo: String.t(),
+          last_mod: String.t(),
+          organizer: String.t(),
+          priority: String.t(),
+          seq: String.t(),
+          status: String.t(),
+          transp: String.t(),
+          url: String.t(),
+          recurid: String.t(),
+          rrule: String.t(),
+          attach: String.t(),
+          attendee: String.t(),
+          categories: String.t(),
+          comment: String.t(),
+          contact: String.t(),
+          exdate: String.t(),
+          rstatus: String.t(),
+          related: String.t(),
+          resources: String.t(),
+          rdate: String.t(),
+          x_prop: String.t(),
+          iana_prop: String.t()
+        }
 end

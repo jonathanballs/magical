@@ -8,5 +8,6 @@ defmodule Magical do
   @doc """
     Parse an iCal string
   """
+  @spec parse(String.t()) :: {:ok, Magical.Calendar.t()} | {:error, :invalid}
   def parse(string), do: Parser.parse(string)
 end
