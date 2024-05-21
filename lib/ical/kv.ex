@@ -3,7 +3,7 @@ defmodule ICal.Kv do
     case String.split(ical_line, ":", parts: 2) do
       [key, value] ->
         {key, params} = parse_key(key)
-        {key, value, params}
+        {String.downcase(key), value, params}
 
       _ ->
         nil

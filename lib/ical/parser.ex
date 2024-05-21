@@ -29,12 +29,12 @@ defmodule ICal.Parser do
   end
 
   @spec build_tree(List.t(), [{String.t(), String.t()}]) :: {List.t(), [{String.t(), String.t()}]}
-  def build_tree(tree, [{"BEGIN", _value, _} = line | tail]) do
+  def build_tree(tree, [{"begin", _value, _} = line | tail]) do
     {child_tree, tail} = build_tree([line], tail)
     build_tree([Enum.reverse(child_tree) | tree], tail)
   end
 
-  def build_tree(tree, [{"END", _value, _} = line | tail]) do
+  def build_tree(tree, [{"end", _value, _} = line | tail]) do
     {[line | tree], tail}
   end
 
