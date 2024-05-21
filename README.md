@@ -1,6 +1,8 @@
 # Magical
 
-An ICS parser for Elixir
+A better iCalendar parser for Elixir. Magical has full time zone support
+(including for `X-WR-TIMEZONE`) and supports many common (but non-standard)
+options such as `X-WR-CALNAME`
 
 ## Installation
 
