@@ -6,6 +6,7 @@ defmodule Magical.MixProject do
       name: "Magical",
       description: "An iCal parser with better time zone support",
       app: :magical,
+      package: package(),
       version: "0.1.0",
       elixir: "~> 1.16",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -32,6 +33,13 @@ defmodule Magical.MixProject do
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.33", only: :dev, runtime: false},
       {:timex, "~> 3.7"}
+    ]
+  end
+
+  defp package do
+    [
+      links: %{"GitHub" => "https://github.com/jonathanballs/magical"},
+      licenses: ["Apache-2.0"]
     ]
   end
 end
