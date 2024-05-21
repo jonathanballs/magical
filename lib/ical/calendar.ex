@@ -1,5 +1,7 @@
 defmodule Magical.Calendar do
-  @moduledoc false
+  @moduledoc """
+  A representation of a iCalendar VCALENDAR
+  """
 
   defstruct prodid: nil,
             version: nil,

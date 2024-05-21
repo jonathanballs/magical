@@ -1,5 +1,7 @@
 defmodule Magical.Event do
-  @moduledoc false
+  @moduledoc """
+  A representation of a iCalendar VEVENT
+  """
 
   defstruct uid: nil,
             dtstamp: nil,
