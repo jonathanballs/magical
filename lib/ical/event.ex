@@ -1,4 +1,6 @@
 defmodule Magical.Event do
+  @moduledoc false
+
   defstruct uid: nil,
             dtstamp: nil,
             summary: nil,

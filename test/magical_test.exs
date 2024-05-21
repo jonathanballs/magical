@@ -59,7 +59,7 @@ defmodule MagicalTest do
            } = calendar
   end
 
-  test "tzid" do
+  test "event TZID is respected" do
     {:ok, calendar} =
       """
       BEGIN:VCALENDAR

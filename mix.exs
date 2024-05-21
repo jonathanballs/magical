@@ -31,6 +31,7 @@ defmodule Magical.MixProject do
   defp deps do
     [
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.33", only: :dev, runtime: false},
       {:timex, "~> 3.7"}
     ]

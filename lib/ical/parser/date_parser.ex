@@ -13,7 +13,7 @@ defmodule Magical.Parser.DateParser do
     - **Date spec:**      http://www.kanzaki.com/docs/ical/date.html
   """
 
-  @spec parse(String.t()) :: %DateTime{} | %NaiveDateTime{} | %Date{} | nil
+  @spec parse(String.t()) :: DateTime.t() | NaiveDateTime.t() | Date.t() | nil
   def parse(data)
 
   # Date Format: "19690620T201804Z"

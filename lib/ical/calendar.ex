@@ -1,4 +1,6 @@
 defmodule Magical.Calendar do
+  @moduledoc false
+
   defstruct prodid: nil,
             version: nil,
             time_zone: "Etc/UTC",

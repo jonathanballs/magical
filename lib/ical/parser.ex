@@ -1,8 +1,8 @@
 defmodule Magical.Parser do
   @moduledoc false
 
-  alias Magical.Event
   alias Magical.Calendar
+  alias Magical.Event
   alias Magical.Parser.CalendarParser
 
   def parse(ical_string) do
