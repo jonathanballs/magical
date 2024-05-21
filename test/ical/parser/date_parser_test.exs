@@ -1,6 +1,6 @@
-defmodule ICal.Parser.DateParserTest do
+defmodule Magical.Parser.DateParserTest do
   use ExUnit.Case
-  alias ICal.Parser.DateParser
+  alias Magical.Parser.DateParser
 
   test "parsing" do
     # Standard date time

@@ -1,20 +1,20 @@
-defmodule ICalTest do
+defmodule MagicalTest do
   use ExUnit.Case
-  alias ICal.Fixtures
+  alias Magical.Fixtures
 
   test "Parses a dinner reservation" do
     {:ok, calendar} =
       "example.ics"
       |> Fixtures.load()
-      |> ICal.parse()
+      |> Magical.parse()
 
-    assert %ICal.Calendar{
+    assert %Magical.Calendar{
              prodid: "//DesignMyNight//Booking//EN",
              version: "2.0",
              time_zone: "Europe/London",
              title: nil,
              events: [
-               %ICal.Event{
+               %Magical.Event{
                  uid: "6529327f4eabe",
                  dtstamp: ~U[2023-10-13 12:05:19Z],
                  summary: "Booking at The King's Arms",
@@ -33,18 +33,18 @@ defmodule ICalTest do
     {:ok, calendar} =
       "bank-holidays.ics"
       |> Fixtures.load()
-      |> ICal.parse()
+      |> Magical.parse()
 
-    assert %ICal.Calendar{
+    assert %Magical.Calendar{
              events: [
-               %ICal.Event{
+               %Magical.Event{
                  dtstamp: ~U[2024-05-03 22:13:17Z],
                  summary: "Good Friday",
                  uid: "ca6af7456b0088abad9a69f9f620f5ac-2018-03-30-GoodFriday@gov.uk",
                  dtend: ~D[2018-03-31],
                  dtstart: ~D[2018-03-30]
                },
-               %ICal.Event{
+               %Magical.Event{
                  uid: "ca6af7456b0088abad9a69f9f620f5ac-2018-01-01-NewYearsDay@gov.uk",
                  dtstamp: ~U[2024-05-03 22:13:17Z],
                  summary: "New Year’s Day",

@@ -1,4 +1,4 @@
-defmodule ICal.Calendar do
+defmodule Magical.Calendar do
   defstruct prodid: nil,
             version: nil,
             time_zone: "Etc/UTC",

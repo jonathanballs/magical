@@ -1,4 +1,4 @@
-defmodule ICal.Parser.DateParser do
+defmodule Magical.Parser.DateParser do
   @moduledoc """
   Responsible for parsing datestrings in predefined formats with `parse/1` and
   `parse/2`.

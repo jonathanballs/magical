@@ -1,5 +1,5 @@
-defmodule ICal.Parser.EventParser do
-  alias ICal.Parser.DateParser
+defmodule Magical.Parser.EventParser do
+  alias Magical.Parser.DateParser
 
   @spec parse_event({String.t(), String.t(), String.t()}, Event.t()) :: Event.t()
   def parse_event({"dtstart", dtstart, _}, event),
@@ -13,7 +13,7 @@ defmodule ICal.Parser.EventParser do
 
   def parse_event({field, value, _}, event) do
     keys =
-      ICal.Event.__struct__()
+      Magical.Event.__struct__()
       |> Map.keys()
       |> Enum.filter(fn k -> k != :__struct__ end)
       |> Enum.map(&to_string/1)

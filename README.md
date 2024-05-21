@@ -1,4 +1,4 @@
-# ICal
+# Magical
 
 An ICS parser for Elixir
 

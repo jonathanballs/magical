@@ -1,4 +1,4 @@
-defmodule ICal.Event do
+defmodule Magical.Event do
   defstruct uid: nil,
             dtstamp: nil,
             summary: nil,

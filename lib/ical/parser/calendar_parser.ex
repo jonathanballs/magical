@@ -1,9 +1,8 @@
-defmodule ICal.Parser.CalendarParser do
-  alias ICal.Event
-  alias ICal.Parser.EventParser
+defmodule Magical.Parser.CalendarParser do
+  alias Magical.Event
+  alias Magical.Parser.EventParser
 
   def parse_calendar([{"begin", "VEVENT", _} | _] = event, calendar) do
-    # child = parse_event(%ICal.Event{}, child)
     child = Enum.reduce(event, %Event{}, &EventParser.parse_event/2)
     %{calendar | events: [child | calendar.events]}
   end

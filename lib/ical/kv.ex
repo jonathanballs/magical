@@ -1,4 +1,4 @@
-defmodule ICal.Kv do
+defmodule Magical.Kv do
   def parse(ical_line) do
     case String.split(ical_line, ":", parts: 2) do
       [key, value] ->

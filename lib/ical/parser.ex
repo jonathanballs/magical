@@ -1,7 +1,7 @@
-defmodule ICal.Parser do
-  alias ICal.Event
-  alias ICal.Calendar
-  alias ICal.Parser.CalendarParser
+defmodule Magical.Parser do
+  alias Magical.Event
+  alias Magical.Calendar
+  alias Magical.Parser.CalendarParser
 
   def parse(ical_string) do
     calendar =
@@ -10,7 +10,7 @@ defmodule ICal.Parser do
       |> String.split("\n")
       |> Enum.map(&String.trim_trailing/1)
       |> Enum.map(&String.replace(&1, ~S"\n", "\n"))
-      |> Enum.map(&ICal.Kv.parse/1)
+      |> Enum.map(&Magical.Kv.parse/1)
       |> Enum.filter(fn l -> not is_nil(l) end)
       |> build_tree()
       |> Enum.reduce(%Calendar{}, &CalendarParser.parse_calendar/2)

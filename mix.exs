@@ -1,9 +1,9 @@
-defmodule ICal.MixProject do
+defmodule Magical.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :ical,
+      app: :magical,
       version: "0.1.0",
       elixir: "~> 1.16",
       elixirc_paths: elixirc_paths(Mix.env()),
