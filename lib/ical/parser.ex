@@ -4,19 +4,31 @@ defmodule Magical.Parser do
   alias Magical.Parser.CalendarParser
 
   def parse(ical_string) do
-    calendar =
-      ical_string
-      |> adjust_wrapped_lines()
-      |> String.split("\n")
-      |> Enum.map(&String.trim_trailing/1)
-      |> Enum.map(&String.replace(&1, ~S"\n", "\n"))
-      |> Enum.map(&Magical.Kv.parse/1)
-      |> Enum.filter(fn l -> not is_nil(l) end)
-      |> build_tree()
-      |> Enum.reduce(%Calendar{}, &CalendarParser.parse_calendar/2)
-      |> resolve_time_zones()
+    ical_string
+    |> prepare_lines()
+    |> Enum.map(&Magical.Kv.parse/1)
+    |> case do
+      [{"begin", "VCALENDAR", _} | _tail] = content ->
+        calendar =
+          content
+          |> Enum.filter(fn l -> not is_nil(l) end)
+          |> build_tree()
+          |> Enum.reduce(%Calendar{}, &CalendarParser.parse_calendar/2)
+          |> resolve_time_zones()
 
-    {:ok, calendar}
+        {:ok, calendar}
+
+      _ ->
+        {:error, :invalid}
+    end
+  end
+
+  defp prepare_lines(lines) do
+    lines
+    |> adjust_wrapped_lines()
+    |> String.split("\n")
+    |> Enum.map(&String.trim_trailing/1)
+    |> Enum.map(&String.replace(&1, ~S"\n", "\n"))
   end
 
   defp adjust_wrapped_lines(body) do

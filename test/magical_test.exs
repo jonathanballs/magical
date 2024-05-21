@@ -58,4 +58,9 @@ defmodule MagicalTest do
              version: "2.0"
            } = calendar
   end
+
+  test "Parses invalid icalendars" do
+    assert {:error, :invalid} = Magical.parse("invalid string")
+    assert {:error, :invalid} = Magical.parse("invalid:string")
+  end
 end

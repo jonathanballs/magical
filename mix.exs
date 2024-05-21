@@ -3,6 +3,8 @@ defmodule Magical.MixProject do
 
   def project do
     [
+      name: "Magical",
+      description: "An iCal parser with better time zone support",
       app: :magical,
       version: "0.1.0",
       elixir: "~> 1.16",
@@ -28,6 +30,7 @@ defmodule Magical.MixProject do
   defp deps do
     [
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.33", only: :dev, runtime: false},
       {:timex, "~> 3.7"}
     ]
   end
