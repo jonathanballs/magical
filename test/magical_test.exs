@@ -59,6 +59,41 @@ defmodule MagicalTest do
            } = calendar
   end
 
+  test "tzid" do
+    {:ok, calendar} =
+      """
+      BEGIN:VCALENDAR
+      VERSION:2.0
+      BEGIN:VEVENT
+      DTSTART;TZID=America/New_York:19980119T020000
+      DTEND;TZID=Europe/Paris:19980119T020000
+      END:VEVENT
+      END:VCALENDAR
+      """
+      |> Magical.parse()
+
+    {:ok, dtstart} = DateTime.from_naive(~N[1998-01-19 02:00:00], "America/New_York")
+    {:ok, dtend} = DateTime.from_naive(~N[1998-01-19 02:00:00], "Europe/Paris")
+
+    assert %Magical.Calendar{
+             prodid: nil,
+             version: "2.0",
+             time_zone: "Etc/UTC",
+             title: nil,
+             events: [
+               %Magical.Event{
+                 uid: nil,
+                 dtstamp: nil,
+                 summary: nil,
+                 description: nil,
+                 location: nil,
+                 dtstart: ^dtstart,
+                 dtend: ^dtend
+               }
+             ]
+           } = calendar
+  end
+
   test "Parses invalid icalendars" do
     assert {:error, :invalid} = Magical.parse("invalid string")
     assert {:error, :invalid} = Magical.parse("invalid:string")
