@@ -10,7 +10,7 @@ by adding `ical` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:ical, "~> 0.1.0"}
+    {:magical, "~> 0.1.0"}
   ]
 end
 ```
