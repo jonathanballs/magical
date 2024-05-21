@@ -1,9 +1,12 @@
 defmodule Magical do
   @moduledoc """
-  Documentation for `Ical`.
+  Documentation for `Magical`.
   """
 
   alias Magical.Parser
 
-  defdelegate parse(string), to: Parser
+  @doc """
+    Parse an iCal string
+  """
+  def parse(string), do: Parser.parse(string)
 end

@@ -1,7 +1,6 @@
 defmodule Magical.Parser.DateParser do
   @moduledoc """
-  Responsible for parsing datestrings in predefined formats with `parse/1` and
-  `parse/2`.
+  Responsible for parsing datestrings in predefined formats with `parse/1`.
   """
 
   @doc """
@@ -44,4 +43,3 @@ defmodule Magical.Parser.DateParser do
     nil
   end
 end
-

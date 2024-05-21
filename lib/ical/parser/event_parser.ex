@@ -1,4 +1,6 @@
 defmodule Magical.Parser.EventParser do
+  @moduledoc false
+
   alias Magical.Parser.DateParser
 
   @spec parse_event({String.t(), String.t(), String.t()}, Event.t()) :: Event.t()

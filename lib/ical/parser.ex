@@ -1,4 +1,6 @@
 defmodule Magical.Parser do
+  @moduledoc false
+
   alias Magical.Event
   alias Magical.Calendar
   alias Magical.Parser.CalendarParser
