@@ -3,6 +3,5 @@ defmodule ICal.Calendar do
             version: nil,
             time_zone: "Etc/UTC",
             title: nil,
-            events: [],
-            children: []
+            events: []
 end
