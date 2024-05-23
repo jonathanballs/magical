@@ -15,7 +15,7 @@ defmodule Magical.Parser do
           content
           |> Enum.filter(fn l -> not is_nil(l) end)
           |> build_tree()
-          |> Enum.reduce(%Calendar{}, &CalendarParser.parse_calendar/2)
+          |> CalendarParser.parse()
           |> resolve_time_zones()
 
         {:ok, calendar}
