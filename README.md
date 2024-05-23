@@ -13,10 +13,85 @@ options such as `X-WR-CALNAME` and `X-WR-DESC`.
 
 ## Installation
 
+Just add `magical` to your list of dependencies in `mix.exs`:
+
 ```elixir
 def deps do
   [
     {:magical, "~> 0.1.2"}
   ]
 end
+```
+
+## Quickstart
+
+```elixir
+"""
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID://Magical//Booking//EN
+X-WR-TIMEZONE:Europe/London
+X-PUBLISHED-TTL:P1W
+BEGIN:VTIMEZONE
+TZID:Europe/London
+X-LIC-LOCATION:Europe/London
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:6529327f4eabe
+DTSTART:20231013T190000
+SEQUENCE:0
+TRANSP:OPAQUE
+DTEND:20231013T210000
+LOCATION:251 Tooley Street\, London\, SE1 2JX
+GEO:51.501568;-0.075906
+SUMMARY:Booking at The King's Arms
+CLASS:PUBLIC
+DESCRIPTION:Your booking is confirmed for 6 people at 2 o'clock
+DTSTAMP:20231013T120519Z
+END:VEVENT
+END:VCALENDAR
+""" |> Magical.parse()
+{:ok,
+ %Magical.Calendar{
+   prodid: "//Magical//Booking//EN",
+   version: "2.0",
+   time_zone: "Europe/London",
+   name: nil,
+   description: nil,
+   events: [
+     %Magical.Event{
+       uid: "6529327f4eabe",
+       dtstamp: ~U[2023-10-13 12:05:19Z],
+       summary: "Booking at The King's Arms",
+       description: "Your booking is confirmed for 6 people at 2 o'clock",
+       location: "251 Tooley Street, London, SE1 2JX",
+       dtstart: #DateTime<2023-10-13 19:00:00+01:00 BST Europe/London>,
+       dtend: #DateTime<2023-10-13 21:00:00+01:00 BST Europe/London>,
+       class: "PUBLIC",
+       created: nil,
+       geo: "51.501568;-0.075906",
+       last_mod: nil,
+       organizer: nil,
+       priority: nil,
+       seq: nil,
+       status: nil,
+       transp: "OPAQUE",
+       url: nil,
+       recurid: nil,
+       rrule: nil,
+       attach: nil,
+       attendee: nil,
+       categories: nil,
+       comment: nil,
+       contact: nil,
+       exdate: nil,
+       rstatus: nil,
+       related: nil,
+       resources: nil,
+       rdate: nil,
+       x_prop: nil,
+       iana_prop: nil
+     }
+   ]
+ }}
 ```
