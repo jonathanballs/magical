@@ -4,8 +4,9 @@ defmodule Magical.MixProject do
   def project do
     [
       name: "Magical",
-      description: "An iCal parser with better time zone support",
+      description: "An RFC 5545 compatible iCalendar parser",
       app: :magical,
+      test_coverage: [tool: ExCoveralls],
       package: package(),
       version: "0.1.2",
       elixir: "~> 1.16",
@@ -30,10 +31,11 @@ defmodule Magical.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:timex, "~> 3.7"},
       {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.33", only: :dev, runtime: false},
-      {:timex, "~> 3.7"}
+      {:excoveralls, "~> 0.18.1", only: :test}
     ]
   end
 
