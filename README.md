@@ -5,11 +5,10 @@
 [![Coverage Status](https://coveralls.io/repos/github/jonathanballs/magical/badge.svg?branch=main)](https://coveralls.io/github/jonathanballs/magical?branch=main)
 
 Magical is a [RFC 5545](https://www.ietf.org/rfc/rfc5545.txt) compatible parser
-for iCalendar files.
-
-A better iCalendar parser for Elixir. Magical has full time zone support
-(including for `X-WR-TIMEZONE`) and supports many common (but non-standard)
-options such as `X-WR-CALNAME` and `X-WR-DESC`.
+for iCalendar files. It parses the file in an intelligent manner by converting
+values into native Elixir data types and resolving time zones automatically.
+Magical is lenient in what it accepts and supports the more common non-standard
+extensions to iCalendar such as `X-WR-TIMEZONE`, `X-WR-CALNAME` or `X-WR-DESC`.
 
 ## Installation
 
