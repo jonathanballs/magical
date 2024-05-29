@@ -1,6 +1,7 @@
 defmodule Magical.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/jonathanballs/magical"
   def project do
     [
       name: "Magical",
@@ -12,8 +13,9 @@ defmodule Magical.MixProject do
       elixir: "~> 1.16",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
-      source_url: "https://github.com/jonathanballs/magical",
-      deps: deps()
+      source_url: @source_url,
+      deps: deps(),
+      docs: docs()
     ]
   end
 
@@ -43,6 +45,16 @@ defmodule Magical.MixProject do
     [
       links: %{"GitHub" => "https://github.com/jonathanballs/magical"},
       licenses: ["Apache-2.0"]
+    ]
+  end
+
+  defp docs() do
+    [
+      main: "readme",
+      name: "Magical",
+      canonical: "http://hexdocs.pm/magical",
+      source_url: @source_url,
+      extras: ["README.md", "LICENSE"]
     ]
   end
 end
