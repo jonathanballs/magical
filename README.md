@@ -49,7 +49,7 @@ DESCRIPTION:Your booking is confirmed for 6 people at 2 o'clock
 DTSTAMP:20231013T120519Z
 END:VEVENT
 END:VCALENDAR
-""" |> Magical.parse()
+""" |> Magical.from_ics()
 {:ok,
  %Magical.Calendar{
    prodid: "//Magical//Booking//EN",
