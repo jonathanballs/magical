@@ -1,6 +1,8 @@
 defmodule Magical.Serializer.CalendarSerializer do
   alias Magical.Calendar
 
+  alias Magical.Serializer.EventSerializer
+
   @defaults %{
     version: "2.0",
     calscale: "GREGORIAN",
@@ -39,7 +41,21 @@ defmodule Magical.Serializer.CalendarSerializer do
     "CALSCALE:#{calscale}\n" <> do_serialize(Map.delete(calendar, :calscale))
   end
 
-  defp do_serialize(%{}) do
-    ""
+  defp do_serialize(%{name: name} = calendar) do
+    "X-WR-CALNAME:#{name}\n" <> do_serialize(Map.delete(calendar, :name))
+  end
+
+  defp do_serialize(%{description: description} = calendar) do
+    "X-WR-CALDESC:#{description}\n" <> do_serialize(Map.delete(calendar, :description))
+  end
+
+  defp do_serialize(%{time_zone: time_zone} = calendar) do
+    "X-WR-TIMEZONE:#{time_zone}\n" <> do_serialize(Map.delete(calendar, :time_zone))
+  end
+
+  defp do_serialize(%{events: events}) do
+    events
+    |> Enum.map(&EventSerializer.serialize/1)
+    |> Enum.join("")
   end
 end

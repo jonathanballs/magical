@@ -5,7 +5,7 @@ defmodule Magical.Calendar do
 
   defstruct prodid: nil,
             version: nil,
-            time_zone: "Etc/UTC",
+            time_zone: nil,
             name: nil,
             description: nil,
             events: []
