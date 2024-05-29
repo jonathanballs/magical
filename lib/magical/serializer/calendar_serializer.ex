@@ -23,6 +23,10 @@ defmodule Magical.Serializer.CalendarSerializer do
     """
   end
 
+  defp do_serialize(%{version: version} = calendar) do
+    "VERSION:#{version}\n" <> do_serialize(Map.delete(calendar, :version))
+  end
+
   defp do_serialize(%{method: method} = calendar) do
     "METHOD:#{method}\n" <> do_serialize(Map.delete(calendar, :method))
   end

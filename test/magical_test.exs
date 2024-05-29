@@ -102,9 +102,10 @@ defmodule MagicalTest do
   end
 
   describe "to_ics" do
-    test "creates an ics from an empty calendar" do
+    test "creates an ics from an empty calendar with defaults" do
       assert """
              BEGIN:VCALENDAR
+             VERSION:2.0
              METHOD:PUBLISH
              PRODID://Magical//EN
              CALSCALE:GREGORIAN
