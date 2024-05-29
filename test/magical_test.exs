@@ -6,7 +6,7 @@ defmodule MagicalTest do
     {:ok, calendar} =
       "example.ics"
       |> Fixtures.load()
-      |> Magical.parse()
+      |> Magical.from_ics()
 
     assert %Magical.Calendar{
              prodid: "//DesignMyNight//Booking//EN",
@@ -33,7 +33,7 @@ defmodule MagicalTest do
     {:ok, calendar} =
       "bank-holidays.ics"
       |> Fixtures.load()
-      |> Magical.parse()
+      |> Magical.from_ics()
 
     assert %Magical.Calendar{
              events: [
@@ -70,7 +70,7 @@ defmodule MagicalTest do
       END:VEVENT
       END:VCALENDAR
       """
-      |> Magical.parse()
+      |> Magical.from_ics()
 
     {:ok, dtstart} = DateTime.from_naive(~N[1998-01-19 02:00:00], "America/New_York")
     {:ok, dtend} = DateTime.from_naive(~N[1998-01-19 02:00:00], "Europe/Paris")
@@ -95,7 +95,7 @@ defmodule MagicalTest do
   end
 
   test "Parses invalid icalendars" do
-    assert {:error, :invalid} = Magical.parse("invalid string")
-    assert {:error, :invalid} = Magical.parse("invalid:string")
+    assert {:error, :invalid} = Magical.from_ics("invalid string")
+    assert {:error, :invalid} = Magical.from_ics("invalid:string")
   end
 end
