@@ -1,21 +1,26 @@
 defmodule Magical.Parser.EventParser do
   @moduledoc false
 
+  alias Magical.Event
   alias Magical.Parser.DateParser
 
+  def parse(lines) do
+    Enum.reduce(lines, %Event{}, &parse_event/2)
+  end
+
   @spec parse_event({String.t(), String.t(), String.t()}, Event.t()) :: Event.t()
-  def parse_event({"dtstart", dtstart, args}, event) do
+  defp parse_event({"dtstart", dtstart, args}, event) do
     Map.put(event, :dtstart, DateParser.parse(dtstart, args))
   end
 
-  def parse_event({"dtend", dtend, args}, event) do
+  defp parse_event({"dtend", dtend, args}, event) do
     Map.put(event, :dtend, DateParser.parse(dtend, args))
   end
 
-  def parse_event({"dtstamp", dtstamp, _}, event),
+  defp parse_event({"dtstamp", dtstamp, _}, event),
     do: Map.put(event, :dtstamp, DateParser.parse(dtstamp, %{}))
 
-  def parse_event({field, value, _}, event) do
+  defp parse_event({field, value, _}, event) do
     keys =
       Magical.Event.__struct__()
       |> Map.keys()
