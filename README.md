@@ -5,10 +5,21 @@
 [![Coverage Status](https://coveralls.io/repos/github/jonathanballs/magical/badge.svg?branch=main)](https://coveralls.io/github/jonathanballs/magical?branch=main)
 
 Magical is a [RFC 5545](https://www.ietf.org/rfc/rfc5545.txt) compatible parser
-for iCalendar files. It parses the file in an intelligent manner by converting
-values into native Elixir data types and resolving time zones automatically.
-Magical is lenient in what it accepts and supports the more common non-standard
-extensions to iCalendar such as `X-WR-TIMEZONE`, `X-WR-CALNAME` or `X-WR-DESC`.
+and serializer for iCalendar files. It parses the file intelligently by
+converting values into native Elixir types and resolving time zones
+automatically.
+
+Magical is designed to comply with [Postel's
+law](https://en.wikipedia.org/wiki/Robustness_principle) - which means that
+it is lenient in what it accepts and strict in what it produces. It accepts and
+supports the more common non-standard extensions to iCalendar such as
+`X-WR-TIMEZONE`, `X-WR-CALNAME` or `X-WR-DESC`. It will also gracefully handle
+poor character escaping and other idiosyncrasies found in real world ICS files.
+Internally it uses [NimbleParsec](https://github.com/dashbitco/nimble_parsec)
+for parsing to ensure robust parsing of escaped strings. It has been tested
+against a variety of edge cases and noncompliant ics files as well. The iCalendar
+files that it produces are tested against both the iCalendar spec as well as
+real calendar software.
 
 ## Installation
 
