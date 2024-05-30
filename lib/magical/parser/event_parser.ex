@@ -1,6 +1,7 @@
 defmodule Magical.Parser.EventParser do
   @moduledoc false
 
+  alias Magical.Parser.TextParser
   alias Magical.Event
   alias Magical.Parser.DateParser
 
@@ -28,7 +29,7 @@ defmodule Magical.Parser.EventParser do
       |> Enum.map(&to_string/1)
 
     case Enum.member?(keys, field) do
-      true -> Map.put(event, String.to_atom(field), value)
+      true -> Map.put(event, String.to_atom(field), TextParser.parse(value))
       false -> event
     end
   end
