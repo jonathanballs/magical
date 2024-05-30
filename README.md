@@ -36,31 +36,9 @@ end
 ## Quickstart
 
 ```elixir
-"""
-BEGIN:VCALENDAR
-VERSION:2.0
-PRODID://Magical//Booking//EN
-X-WR-TIMEZONE:Europe/London
-X-PUBLISHED-TTL:P1W
-BEGIN:VTIMEZONE
-TZID:Europe/London
-X-LIC-LOCATION:Europe/London
-END:VTIMEZONE
-BEGIN:VEVENT
-UID:6529327f4eabe
-DTSTART:20231013T190000
-SEQUENCE:0
-TRANSP:OPAQUE
-DTEND:20231013T210000
-LOCATION:251 Tooley Street\, London\, SE1 2JX
-GEO:51.501568;-0.075906
-SUMMARY:Booking at The King's Arms
-CLASS:PUBLIC
-DESCRIPTION:Your booking is confirmed for 6 people at 2 o'clock
-DTSTAMP:20231013T120519Z
-END:VEVENT
-END:VCALENDAR
-""" |> Magical.from_ics()
+"test.ics"
+|> File.read!()
+|> Magical.from_ics()
 {:ok,
  %Magical.Calendar{
    prodid: "//Magical//Booking//EN",
