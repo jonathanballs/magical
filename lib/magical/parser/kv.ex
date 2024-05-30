@@ -1,4 +1,4 @@
-defmodule Magical.Kv do
+defmodule Magical.Parser.Kv do
   @moduledoc false
 
   def parse(ical_line) do

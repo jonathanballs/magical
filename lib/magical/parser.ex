@@ -8,7 +8,7 @@ defmodule Magical.Parser do
   def parse(ical_string) do
     ical_string
     |> prepare_lines()
-    |> Enum.map(&Magical.Kv.parse/1)
+    |> Enum.map(&Magical.Parser.Kv.parse/1)
     |> case do
       [{"begin", "VCALENDAR", _} | _tail] = content ->
         calendar =
