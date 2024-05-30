@@ -13,6 +13,7 @@ defmodule Magical.Parser.TextParserTest do
 
   test "returns original string if invalid escapes" do
     assert TextParser.parse("hello\\pworld") == "hello\\pworld"
+    assert TextParser.parse("\\") == "\\"
   end
 
   test "handles unescaped characters gracefully" do

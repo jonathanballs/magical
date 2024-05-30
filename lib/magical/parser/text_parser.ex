@@ -5,16 +5,13 @@ defmodule Magical.Parser.TextParser do
   import NimbleParsec
 
   def parse(text_string) do
-    case nimble_parse(text_string) do
-      {:ok, string, _, _, _, _} ->
-        string
-        |> Enum.map(&unescape_char/1)
-        |> to_string()
+    # This can't really fail because any string could just be string of
+    # utf8_char if the original generator refused to escape anything.
+    {:ok, string, _, _, _, _} = nimble_parse(text_string)
 
-      _error ->
-        # In the case that unescaping fails then just return the original string
-        text_string
-    end
+    string
+    |> Enum.map(&unescape_char/1)
+    |> to_string()
   end
 
   escaped_char =

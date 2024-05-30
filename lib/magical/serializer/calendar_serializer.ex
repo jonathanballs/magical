@@ -2,7 +2,7 @@ defmodule Magical.Serializer.CalendarSerializer do
   alias Magical.Calendar
 
   alias Magical.Serializer.EventSerializer
-  alias Magical.Serializer.Kv
+  alias Magical.Serializer.KvSerializer
 
   @defaults %{
     version: "2.0",
@@ -27,31 +27,33 @@ defmodule Magical.Serializer.CalendarSerializer do
   end
 
   defp do_serialize(%{version: version} = calendar) do
-    Kv.serialize(:version, version) <> do_serialize(Map.delete(calendar, :version))
+    KvSerializer.serialize(:version, version) <> do_serialize(Map.delete(calendar, :version))
   end
 
   defp do_serialize(%{method: method} = calendar) do
-    Kv.serialize(:method, method) <> do_serialize(Map.delete(calendar, :method))
+    KvSerializer.serialize(:method, method) <> do_serialize(Map.delete(calendar, :method))
   end
 
   defp do_serialize(%{prodid: prodid} = calendar) do
-    Kv.serialize(:prodid, prodid) <> do_serialize(Map.delete(calendar, :prodid))
+    KvSerializer.serialize(:prodid, prodid) <> do_serialize(Map.delete(calendar, :prodid))
   end
 
   defp do_serialize(%{calscale: calscale} = calendar) do
-    Kv.serialize(:calscale, calscale) <> do_serialize(Map.delete(calendar, :calscale))
+    KvSerializer.serialize(:calscale, calscale) <> do_serialize(Map.delete(calendar, :calscale))
   end
 
   defp do_serialize(%{name: name} = calendar) do
-    Kv.serialize(:"X-WR-CALNAME", name) <> do_serialize(Map.delete(calendar, :name))
+    KvSerializer.serialize(:"X-WR-CALNAME", name) <> do_serialize(Map.delete(calendar, :name))
   end
 
   defp do_serialize(%{description: description} = calendar) do
-    Kv.serialize(:"X-WR-CALDESC", description) <> do_serialize(Map.delete(calendar, :description))
+    KvSerializer.serialize(:"X-WR-CALDESC", description) <>
+      do_serialize(Map.delete(calendar, :description))
   end
 
   defp do_serialize(%{time_zone: time_zone} = calendar) do
-    Kv.serialize(:"X-WR-TIMEZONE", time_zone) <> do_serialize(Map.delete(calendar, :time_zone))
+    KvSerializer.serialize(:"X-WR-TIMEZONE", time_zone) <>
+      do_serialize(Map.delete(calendar, :time_zone))
   end
 
   defp do_serialize(%{events: events}) do

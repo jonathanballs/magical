@@ -2,7 +2,7 @@ defmodule Magical.Serializer.EventSerializer do
   alias Magical.Serializer.DateSerializer
   alias Magical.Serializer.TextSerializer
   alias Magical.Event
-  alias Magical.Serializer.Kv
+  alias Magical.Serializer.KvSerializer
 
   def serialize(%Event{} = event) do
     content =
@@ -26,11 +26,11 @@ defmodule Magical.Serializer.EventSerializer do
   |> Enum.each(fn field ->
     def do_serialize({unquote(field), value}) do
       {val, params} = DateSerializer.serialize(value)
-      Kv.serialize(unquote(field), val, params)
+      KvSerializer.serialize(unquote(field), val, params)
     end
   end)
 
   def do_serialize({field_name, field_value}) do
-    Kv.serialize(field_name, TextSerializer.serialize(field_value))
+    KvSerializer.serialize(field_name, TextSerializer.serialize(field_value))
   end
 end

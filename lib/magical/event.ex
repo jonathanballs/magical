@@ -4,9 +4,9 @@ defmodule Magical.Event do
   """
 
   defstruct uid: nil,
-            dtstamp: nil,
             summary: nil,
             description: nil,
+            dtstamp: nil,
             location: nil,
             dtstart: nil,
             dtend: nil,

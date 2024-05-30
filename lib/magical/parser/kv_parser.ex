@@ -1,4 +1,4 @@
-defmodule Magical.Parser.Kv do
+defmodule Magical.Parser.KvParser do
   @moduledoc false
   # See: https://icalendar.org/iCalendar-RFC-5545/3-1-content-lines.html
 
@@ -19,8 +19,6 @@ defmodule Magical.Parser.Kv do
         end)
 
       _error ->
-        # dbg(ical_line)
-        # dbg(error)
         nil
     end
   end
