@@ -42,7 +42,7 @@ defmodule Magical.Event do
           description: String.t(),
           location: String.t(),
           class: String.t(),
-          created: String.t(),
+          created: DateTime.t(),
           geo: String.t(),
           last_modified: DateTime.t(),
           organizer: String.t(),
