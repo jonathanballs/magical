@@ -28,4 +28,13 @@ defmodule Magical.Parser.TextParserTest do
   test "handles utf8 characters" do
     assert TextParser.parse("曆") == "曆"
   end
+
+  test "parsing is opposite of serialization" do
+    test_string = ~S("\;,:)
+
+    assert test_string
+           |> Magical.Serializer.TextSerializer.serialize()
+           |> TextParser.parse() ==
+             test_string
+  end
 end
