@@ -54,7 +54,7 @@ defmodule MagicalTest do
                  }
                ],
                prodid: "-//uk.gov/GOVUK calendars//EN",
-               time_zone: "Etc/UTC",
+               time_zone: nil,
                name: nil,
                version: "2.0"
              } = calendar
@@ -79,7 +79,7 @@ defmodule MagicalTest do
       assert %Magical.Calendar{
                prodid: nil,
                version: "2.0",
-               time_zone: "Etc/UTC",
+               time_zone: nil,
                name: nil,
                events: [
                  %Magical.Event{

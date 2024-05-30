@@ -21,6 +21,9 @@ defmodule Magical.Parser.EventParser do
   defp parse_event({"dtstamp", dtstamp, _}, event),
     do: Map.put(event, :dtstamp, DateParser.parse(dtstamp, %{}))
 
+  defp parse_event({"last-modified", last_modified, _}, event),
+    do: Map.put(event, :last_modified, DateParser.parse(last_modified, %{}))
+
   defp parse_event({field, value, _}, event) do
     keys =
       Magical.Event.__struct__()
@@ -29,8 +32,11 @@ defmodule Magical.Parser.EventParser do
       |> Enum.map(&to_string/1)
 
     case Enum.member?(keys, field) do
-      true -> Map.put(event, String.to_atom(field), TextParser.parse(value))
-      false -> event
+      true ->
+        Map.put(event, String.to_atom(field), TextParser.parse(value))
+
+      false ->
+        event
     end
   end
 end

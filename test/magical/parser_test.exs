@@ -82,4 +82,20 @@ defmodule Magical.ParserTest do
       assert %Magical.Calendar{description: "test description"} = calendar
     end
   end
+
+  test "last-modified" do
+    {:ok, calendar} =
+      """
+      BEGIN:VCALENDAR
+      VERSION:2.0
+      BEGIN:VEVENT
+      LAST-MODIFIED:20160615T193723Z
+      END:VEVENT
+      END:VCALENDAR
+      """
+      |> Parser.parse()
+
+    assert %Magical.Calendar{events: [%Magical.Event{last_modified: ~U[2016-06-15 19:37:23Z]}]} =
+             calendar
+  end
 end

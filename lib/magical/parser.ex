@@ -61,6 +61,8 @@ defmodule Magical.Parser do
     {tree, []}
   end
 
+  defp resolve_time_zones(%Calendar{time_zone: nil} = calendar), do: calendar
+
   defp resolve_time_zones(%Calendar{time_zone: time_zone, events: events} = calendar) do
     case DateTime.now(time_zone) do
       {:ok, _time} ->

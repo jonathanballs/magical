@@ -13,7 +13,7 @@ defmodule Magical.Event do
             class: nil,
             created: nil,
             geo: nil,
-            last_mod: nil,
+            last_modified: nil,
             organizer: nil,
             priority: nil,
             seq: nil,
@@ -31,9 +31,7 @@ defmodule Magical.Event do
             rstatus: nil,
             related: nil,
             resources: nil,
-            rdate: nil,
-            x_prop: nil,
-            iana_prop: nil
+            rdate: nil
 
   @type t :: %__MODULE__{
           uid: String.t(),
@@ -46,7 +44,7 @@ defmodule Magical.Event do
           class: String.t(),
           created: String.t(),
           geo: String.t(),
-          last_mod: String.t(),
+          last_modified: DateTime.t(),
           organizer: String.t(),
           priority: String.t(),
           seq: String.t(),
@@ -64,8 +62,6 @@ defmodule Magical.Event do
           rstatus: String.t(),
           related: String.t(),
           resources: String.t(),
-          rdate: String.t(),
-          x_prop: String.t(),
-          iana_prop: String.t()
+          rdate: String.t()
         }
 end
