@@ -4,7 +4,7 @@ defmodule Magical.Serializer.EventSerializer do
   def serialize(%Event{} = _event) do
     """
     BEGIN:VEVENT
-    END:VEVEVENT
+    END:VEVENT
     """
   end
 end

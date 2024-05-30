@@ -21,4 +21,8 @@ defmodule Magical.Parser.TextParserTest do
     assert TextParser.parse("https://unescaped.com and\\, escaped") ==
              "https://unescaped.com and, escaped"
   end
+
+  test "handles utf8 characters" do
+    assert TextParser.parse("曆") == "曆"
+  end
 end

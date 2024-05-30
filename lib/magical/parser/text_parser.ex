@@ -11,13 +11,11 @@ defmodule Magical.Parser.TextParser do
         |> Enum.map(&unescape_char/1)
         |> to_string()
 
-      error ->
-        dbg(error)
+      _error ->
+        # In the case that unescaping fails then just return the original string
         text_string
     end
   end
-
-  safe_char = utf8_char([])
 
   escaped_char =
     choice([
@@ -28,7 +26,7 @@ defmodule Magical.Parser.TextParser do
       string("\\N")
     ])
 
-  char = choice([escaped_char, safe_char])
+  char = choice([escaped_char, utf8_char([])])
   defparsecp(:nimble_parse, repeat(char) |> eos())
 
   defp unescape_char("\\\\"), do: "\\"

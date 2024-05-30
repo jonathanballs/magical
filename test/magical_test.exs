@@ -101,6 +101,21 @@ defmodule MagicalTest do
     end
   end
 
+  describe "from_ics!" do
+    test "raises on error" do
+      assert_raise ArgumentError, fn ->
+        Magical.from_ics!("invalid:string")
+      end
+    end
+
+    test "returns calendar directly if successful" do
+      assert %Magical.Calendar{} =
+               "example.ics"
+               |> Fixtures.load()
+               |> Magical.from_ics!()
+    end
+  end
+
   describe "to_ics" do
     test "creates an ics from an empty calendar with defaults" do
       assert """
@@ -111,6 +126,22 @@ defmodule MagicalTest do
              CALSCALE:GREGORIAN
              END:VCALENDAR
              """ = Magical.to_ics(%Magical.Calendar{})
+    end
+
+    test "creates an ics calendar with empty event" do
+      assert """
+             BEGIN:VCALENDAR
+             VERSION:2.0
+             METHOD:PUBLISH
+             PRODID://Magical//EN
+             CALSCALE:GREGORIAN
+             BEGIN:VEVENT
+             END:VEVENT
+             END:VCALENDAR
+             """ =
+               Magical.to_ics(%Magical.Calendar{
+                 events: [%Magical.Event{}]
+               })
     end
   end
 end
