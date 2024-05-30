@@ -12,7 +12,7 @@ defmodule Magical.Parser.DateParser do
     - **DateTime spec:**  http://www.kanzaki.com/docs/ical/dateTime.html
     - **Date spec:**      http://www.kanzaki.com/docs/ical/date.html
   """
-  @spec parse(String.t(), Map.t()) :: DateTime.t() | NaiveDateTime.t() | Date.t() | nil
+  @spec parse(String.t(), map()) :: DateTime.t() | NaiveDateTime.t() | Date.t() | nil
   def parse(date_string, args \\ %{})
 
   def parse(date_string, %{"tzid" => time_zone} = args) do
