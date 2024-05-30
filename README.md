@@ -28,7 +28,7 @@ Just add `magical` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:magical, "~> 0.1.3"}
+    {:magical, "~> 1.0.0"}
   ]
 end
 ```
