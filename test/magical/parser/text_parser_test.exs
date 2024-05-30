@@ -18,6 +18,9 @@ defmodule Magical.Parser.TextParserTest do
   test "handles unescaped characters gracefully" do
     assert TextParser.parse("visit: https://unescaped.com") == "visit: https://unescaped.com"
 
+    assert TextParser.parse("\\\\n") == "\\n"
+    assert TextParser.parse("\\\\\\n") == "\\\n"
+
     assert TextParser.parse("https://unescaped.com and\\, escaped") ==
              "https://unescaped.com and, escaped"
   end
