@@ -24,6 +24,9 @@ defmodule Magical.Parser.EventParser do
   defp parse_event({"last-modified", last_modified, _}, event),
     do: Map.put(event, :last_modified, DateParser.parse(last_modified, %{}))
 
+  defp parse_event({"created", created, _}, event),
+    do: Map.put(event, :created, DateParser.parse(created, %{}))
+
   defp parse_event({field, value, _}, event) do
     keys =
       Magical.Event.__struct__()

@@ -58,7 +58,7 @@ end
        class: "PUBLIC",
        created: nil,
        geo: "51.501568;-0.075906",
-       last_mod: nil,
+       last_modified: nil,
        organizer: nil,
        priority: nil,
        seq: nil,
