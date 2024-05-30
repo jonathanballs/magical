@@ -4,7 +4,7 @@ defmodule Magical.Serializer.DateSerializerTest do
 
   test "serializes dates" do
     date = Date.new!(2024, 01, 01)
-    assert DateSerializer.serialize(date) == {"20240101", %{}}
+    assert DateSerializer.serialize(date) == {"20240101", %{value: "DATE"}}
   end
 
   test "serializes date times" do

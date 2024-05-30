@@ -11,7 +11,14 @@ defmodule Magical.Serializer.Kv do
 
   defp serialize_params(params) do
     params
-    |> Enum.map(fn {k, v} -> ";#{String.upcase(k)}=#{v}" end)
+    |> Enum.map(fn {key, value} ->
+      key =
+        key
+        |> Atom.to_string()
+        |> String.upcase()
+
+      ";#{key}=#{value}"
+    end)
     |> Enum.join("")
   end
 end

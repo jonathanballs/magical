@@ -2,10 +2,7 @@ defmodule Magical.Serializer.DateSerializer do
   @moduledoc false
 
   def serialize(%Date{} = date) do
-    case Timex.format(date, "%Y%m%d", :strftime) do
-      {:ok, string} -> {string, %{}}
-      _ -> nil
-    end
+    {Timex.format!(date, "%Y%m%d", :strftime), %{value: "DATE"}}
   end
 
   def serialize(%DateTime{} = date_time) do
