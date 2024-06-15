@@ -21,6 +21,9 @@ variety of edge cases and noncompliant ics files. The iCalendar files that it
 produces are tested against both the iCalendar spec as well as real calendar
 software.
 
+Magical was built for a side project called [Calapi](https://calapi.io) which
+provides an API for managing your personal calendars and events.
+
 ## Installation
 
 Just add `magical` to your list of dependencies in `mix.exs`:
