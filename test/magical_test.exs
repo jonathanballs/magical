@@ -121,8 +121,7 @@ defmodule MagicalTest do
       assert """
              BEGIN:VCALENDAR
              VERSION:2.0
-             METHOD:PUBLISH
-             PRODID://Magical//EN
+             PRODID://Magical//Magical//EN
              CALSCALE:GREGORIAN
              END:VCALENDAR
              """ = Magical.to_ics(%Magical.Calendar{})
@@ -132,8 +131,7 @@ defmodule MagicalTest do
       assert """
              BEGIN:VCALENDAR
              VERSION:2.0
-             METHOD:PUBLISH
-             PRODID://Magical//EN
+             PRODID://Magical//Magical//EN
              CALSCALE:GREGORIAN
              BEGIN:VEVENT
              END:VEVENT

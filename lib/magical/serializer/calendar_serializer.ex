@@ -7,8 +7,7 @@ defmodule Magical.Serializer.CalendarSerializer do
   @defaults %{
     version: "2.0",
     calscale: "GREGORIAN",
-    prodid: "//Magical//EN",
-    method: "PUBLISH"
+    prodid: "//Magical//Magical//EN"
   }
 
   def serialize(%Calendar{} = calendar) do

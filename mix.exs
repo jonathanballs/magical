@@ -9,7 +9,7 @@ defmodule Magical.MixProject do
       app: :magical,
       test_coverage: [tool: ExCoveralls],
       package: package(),
-      version: "1.0.0",
+      version: "1.0.1",
       elixir: "~> 1.16",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,

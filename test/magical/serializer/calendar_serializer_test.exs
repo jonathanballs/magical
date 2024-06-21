@@ -8,8 +8,7 @@ defmodule Magical.Serializer.CalendarSerializerTest do
     assert """
            BEGIN:VCALENDAR
            VERSION:2.0
-           METHOD:PUBLISH
-           PRODID://Magical//EN
+           PRODID://Magical//Magical//EN
            CALSCALE:GREGORIAN
            X-WR-CALNAME:Test name
            X-WR-CALDESC:Test description
