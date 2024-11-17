@@ -14,8 +14,7 @@ defmodule Magical.Serializer.DateSerializer do
         {Timex.format!(date_time, "%Y%m%dT%H%M%SZ", :strftime), %{}}
 
       tzid ->
-        {date_time |> DateTime.to_naive() |> Timex.format!("%Y%m%dT%H%M%S", :strftime),
-         %{tzid: tzid}}
+        {date_time |> Timex.format!("%Y%m%dT%H%M%S", :strftime), %{tzid: tzid}}
     end
   end
 
