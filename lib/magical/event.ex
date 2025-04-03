@@ -77,7 +77,8 @@ defmodule Magical.Event do
             rstatus: nil,
             related: nil,
             resources: nil,
-            rdate: nil
+            rdate: nil,
+            alarm: nil
 
   @type t :: %__MODULE__{
           uid: String.t(),
@@ -108,6 +109,7 @@ defmodule Magical.Event do
           rstatus: String.t(),
           related: String.t(),
           resources: String.t(),
-          rdate: String.t()
+          rdate: String.t(),
+          alarm: Magical.Alarm.t()
         }
 end
