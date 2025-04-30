@@ -90,4 +90,5 @@ defmodule Magical.Parser do
 
   defp resolve_time_zones(%Date{} = date, _time_zone), do: date
   defp resolve_time_zones(%DateTime{} = date_time, _time_zone), do: date_time
+  defp resolve_time_zones(nil, _time_zone), do: nil
 end
