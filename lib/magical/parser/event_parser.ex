@@ -1,9 +1,10 @@
 defmodule Magical.Parser.EventParser do
   @moduledoc false
 
-  alias Magical.Parser.TextParser
   alias Magical.Event
+  alias Magical.Parser.TextParser
   alias Magical.Parser.DateParser
+  alias Magical.Parser.AlarmParser
 
   def parse(lines) do
     Enum.reduce(lines, %Event{}, &parse_event/2)
@@ -26,6 +27,9 @@ defmodule Magical.Parser.EventParser do
 
   defp parse_event({"created", created, _}, event),
     do: Map.put(event, :created, DateParser.parse(created, %{}))
+
+  defp parse_event([{"begin", "VALARM", _} | alarm], event),
+    do: Map.put(event, :alarm, AlarmParser.parse(alarm))
 
   defp parse_event({field, value, _}, event) do
     keys =
