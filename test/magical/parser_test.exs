@@ -106,4 +106,29 @@ defmodule Magical.ParserTest do
            } =
              calendar
   end
+
+  describe "time zone resolution" do
+    test "gracefully handles nil start or end times" do
+      expected_dtstart = DateTime.shift_zone!(~U[2025-04-16 12:00:00Z], "Europe/Paris")
+
+      {:ok,
+       %Magical.Calendar{
+         events: [
+           %Magical.Event{
+             dtstart: ^expected_dtstart,
+             dtend: nil
+           }
+         ]
+       }} =
+        """
+        BEGIN:VCALENDAR
+        X-WR-TIMEZONE:Europe/Paris
+        BEGIN:VEVENT
+        DTSTART:20250416T140000
+        END:VEVENT
+        END:VCALENDAR
+        """
+        |> Parser.parse()
+    end
+  end
 end
